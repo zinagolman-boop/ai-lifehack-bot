@@ -249,12 +249,11 @@ async def send_lifehack_to_user(user_id: str, context: ContextTypes.DEFAULT_TYPE
         user["day"] = day
         save_user(user_id, user)
 
-        message = f"🌅 *День {day} — Лайфхак дня*\n\n{response}\n\n---\n💬 Есть вопросы? Просто напиши мне!"
+        message = f"🌅 День {day} — Лайфхак дня\n\n{response}\n\n---\n💬 Есть вопросы? Просто напиши мне!"
 
         await context.bot.send_message(
             chat_id=int(user_id),
-            text=message,
-            parse_mode="Markdown"
+            text=message
         )
     except Exception as e:
         logger.error(f"Error sending lifehack to {user_id}: {e}")
